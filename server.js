@@ -51,18 +51,22 @@ const pino = require('pino')({
 });
 app.use(require('pino-http')({logger: pino}));
 
+const sendGetRequest = async () => {
+  try {
+      const resp = await axios.get('http://krishna-test.kbheeman-dev.svc.cluster.local:3002/');
+      return resp.data;
+  } catch (err) {
+      // Handle Error Here
+      console.error(err);
+      return err;
+  }
+};
+
 app.get('/', (req, res) => {
   // Use req.log (a `pino` instance) to log JSON:
   req.log.info({message: 'Hello from Node.js Starter Application! Krishna'});
-  axios.get('http://krishna-test.kbheeman-dev.svc.cluster.local:3002/')
-  .then(response => {
-    console.log(response);
-    console.log('****Hello from Node.js Starter Application! Krishna'+JSON.stringify(response));
-  })
-  .catch(error => {
-    console.log(error);
-  });
-  res.send('Hello from Node.js Starter Application! Krishna');
+  
+  res.send('Hello from Node.js Starter Application! Krishna'+JSON.stringify(sendGetRequest()));
 });
 
 app.get('*', (req, res) => {
