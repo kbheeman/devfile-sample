@@ -57,7 +57,7 @@ app.get('/', (req, res) => {
   axios.get('http://nodejs-basic.kbheeman-dev.svc.cluster.local:3001/')
   .then(response => {
     console.log(response);
-    console.log('****Hello from Node.js Starter Application! Krishna'+response);
+    console.log('****Hello from Node.js Starter Application! Krishna'+JSON.stringify(response));
   })
   .catch(error => {
     console.log(error);
