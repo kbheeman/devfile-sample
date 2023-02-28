@@ -56,12 +56,13 @@ app.get('/', (req, res) => {
   req.log.info({message: 'Hello from Node.js Starter Application! Krishna'});
   axios.get('http://nodejs-basic.kbheeman-dev.svc.cluster.local:3001/')
   .then(response => {
-    console.log(response.data);
+    console.log(response);
+    console.log('****Hello from Node.js Starter Application! Krishna'+response);
   })
   .catch(error => {
     console.log(error);
   });
-  res.send('Hello from Node.js Starter Application! Krishna'+response.data);
+  res.send('Hello from Node.js Starter Application! Krishna');
 });
 
 app.get('*', (req, res) => {
