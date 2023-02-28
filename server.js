@@ -53,6 +53,7 @@ app.use(require('pino-http')({logger: pino}));
 
 const sendGetRequest = async () => {
   try {
+    console.log('******* Calling the local service');
       const resp = await axios.get('http://krishna-test.kbheeman-dev.svc.cluster.local:3002/');
       console.log('*******'+resp.data);
       return resp.data;
