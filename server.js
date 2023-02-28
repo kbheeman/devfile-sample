@@ -54,7 +54,7 @@ app.use(require('pino-http')({logger: pino}));
 app.get('/', (req, res) => {
   // Use req.log (a `pino` instance) to log JSON:
   req.log.info({message: 'Hello from Node.js Starter Application! Krishna'});
-  axios.get('http://nodejs-basic.kbheeman-dev.svc.cluster.local:3001/')
+  axios.get('http://krishna-test.kbheeman-dev.svc.cluster.local:3002/')
   .then(response => {
     console.log(response);
     console.log('****Hello from Node.js Starter Application! Krishna'+JSON.stringify(response));
