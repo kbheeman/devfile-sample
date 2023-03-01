@@ -67,8 +67,9 @@ const sendGetRequest = async () => {
 app.get('/', (req, res) => {
   // Use req.log (a `pino` instance) to log JSON:
   req.log.info({message: 'Hello from Node.js Starter Application! Krishna'});
-  
-  res.send('Hello from Node.js Starter Application! Krishna'+sendGetRequest());
+  let x="";
+  sendGetRequest().then(data =>{x= data});
+  res.send('Hello from Node.js Starter Application! Krishna'+x);
 });
 
 app.get('*', (req, res) => {
